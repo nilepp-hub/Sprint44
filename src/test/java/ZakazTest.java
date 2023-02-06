@@ -14,7 +14,8 @@ public class ZakazTest {
 
     @Test
     public void testUpZakaz(){
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
         // Открываем сервис
         driver.get("https://qa-scooter.praktikum-services.ru/");
         // Создаем экземпляр класса Page.FAQPage
