@@ -3,6 +3,7 @@ import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,7 +14,7 @@ public class ZakazTest {
 
     @Test
     public void testUpZakaz(){
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         // Открываем сервис
         driver.get("https://qa-scooter.praktikum-services.ru/");
         // Создаем экземпляр класса Page.FAQPage
@@ -52,9 +53,8 @@ public class ZakazTest {
         OrderFormPage.vvodMetro2();
         OrderFormPage.clickDalee();
     }
-
     @After
     public void cleanUp(){
-       // driver.quit();
+        driver.quit();
     }
 }

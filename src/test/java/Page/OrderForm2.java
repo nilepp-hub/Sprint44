@@ -45,8 +45,9 @@ public class OrderForm2 {
     }
     public  static void clickDa() {
         driver.findElement(DA).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        String orderNumber = driver.findElement(By.cssSelector(".Order_Text__2broi")).getText().split(" ")[2];
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("Order_Text__2broi")));
+        String orderNumber = driver.findElement(By.className("Order_Text__2broi")).getText().split(" ")[2];
         System.out.println("Номер заказа: " + orderNumber);
     }
 }
