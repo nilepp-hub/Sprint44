@@ -1,11 +1,10 @@
-import Page.FAQPage;
-import Page.HeaderPage;
-import Page.OrderFormPage;
-import Page.RoadMapPage;
+import Page.*;
 import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -16,19 +15,26 @@ public class ZakazTest {
     @Test
     public void testUpZakaz(){
         driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
         // Открываем сервис
         driver.get("https://qa-scooter.praktikum-services.ru/");
-
         // Создаем экземпляр класса Page.FAQPage
         HeaderPage headerPage = new HeaderPage(driver);
         HeaderPage.upZakazClick();
         OrderFormPage orderFormPage = new OrderFormPage(driver);
-        OrderFormPage.vvodName1();
-        OrderFormPage.vvodFam1();
-        OrderFormPage.vvodAdres1();
+        OrderFormPage.fillOrderUpZakaz();
         OrderFormPage.vvodMetro1();
-        OrderFormPage.vvodPhone1();
-        //Page.OrderFormPage.clickDalee();
+        OrderFormPage.clickDalee();
+        OrderForm2 orderForm2 = new OrderForm2(driver);
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        OrderForm2.vvodKogda();
+        OrderForm2.vvodSrok();
+        OrderForm2.vvodColor();
+        OrderForm2.vvodKoment();
+        OrderForm2.clickNazad();
+        OrderFormPage.clickDalee();
+        OrderForm2.clickZakaz();
+        OrderForm2.clickDa();
         }
 
 
@@ -44,17 +50,12 @@ public class ZakazTest {
         RoadMapPage.downZakazClick();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         OrderFormPage orderFormPage = new OrderFormPage(driver);
-        OrderFormPage.vvodName2();
-        OrderFormPage.vvodFam2();
-        OrderFormPage.vvodAdres2();
+        OrderFormPage.fillOrderDownZakaz();
         OrderFormPage.vvodMetro2();
-        OrderFormPage.vvodPhone2();
-       // OrderFormPage.clickDalee();
+        OrderFormPage.clickDalee();
     }
-
     @After
     public void cleanUp(){
-
-       // driver.quit();
+        driver.quit();
     }
 }
